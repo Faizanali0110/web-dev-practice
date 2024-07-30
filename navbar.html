@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        body {
+            background-color: rgb(52, 52, 52);
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        nav {
+            width: fit-content;
+            height: fit-content;
+           
+            position: relative;
+            overflow: hidden;
+        }
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            list-style: none;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+        #hoverEffect {
+            position: absolute;
+            width: 0;
+            height: 0;
+            background-color: rgba(20, 154, 140, 0.356);
+            top: 0;
+            left: 0;
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li onmouseover="moveHoverEffect(this)">Home</li>
+            <li onmouseover="moveHoverEffect(this)">Contact Us</li>
+            <li onmouseover="moveHoverEffect(this)">About</li>
+        </ul>
+        <span id="hoverEffect"></span>
+    </nav>
+
+    <script>
+        function moveHoverEffect(element) {
+            const hoverEffect = document.getElementById('hoverEffect');
+            const nav = document.querySelector('nav');
+            const navRect = nav.getBoundingClientRect();
+            const elementRect = element.getBoundingClientRect();
+            const leftOffset = elementRect.left - navRect.left;
+            console.log(elementRect.left)
+            console.log(navRect.left)
+            console.log(leftOffset)
+
+            hoverEffect.style.width = `${elementRect.width}px`;
+            hoverEffect.style.height = `${elementRect.height}px`;
+            hoverEffect.style.transform = `translateX(${leftOffset}px)`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800&display=swap');
+        body {
+            background-color: rgb(58, 56, 56);
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: "Poppins", sans-serif;
+            flex-direction: column;
+            width: 100vh;
+        }
+        .container-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .box {
+            width: 8rem;
+            height: 8rem;
+            border: 2px solid white;
+            cursor: pointer;
+            background-color: rgb(77, 96, 77);
+            transition: all 1s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+        .boxSelect:hover {
+            background-color: rgb(197, 3, 3);
+            text-orientation: upright;
+            writing-mode: vertical-lr;
+        }
+        .score {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .popUpMessage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 15rem;
+            height: 10rem;
+            background-color: white;
+            color: black;
+            padding: 2rem;
+            border-radius: 2rem;
+            position: absolute;
+            z-index: 9999;
+            display: none;
+        }
+        .heading {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .heading h3 {
+            color: green;
+        }
+        button[type="submit"] {
+            width: 4rem;
+            height: 2rem;
+            font: bold;
+            font-size: 1rem;
+            border-radius: 10px;
+            background-color: rgba(55, 199, 55, 0.982);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="CONTAINER-GAME">
+            <h2>Let's Play a Game</h2>
+            <div class="container-box">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+            <div class="score">
+                <h2 class="chance">You Have 3 Chances</h2>
+                <h3 class="chancesCount">Chance: 3</h3>
+            </div>
+        </div>
+        <div class="popUpMessage">
+            <div class="heading">
+                <h3 class="status">
+                    You Win!
+                </h3>
+                <h4>
+                    Let's Play Again
+                </h4>
+                <button type="submit" class="button">OK</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let boxes = document.querySelectorAll(".box");
+        let button = document.querySelector(".button");
+        let CONTAINERGame = document.querySelector(".CONTAINER-GAME");
+        
+        // Function to reset the game
+        function resetGame() {
+            boxes.forEach(box => {
+                box.innerHTML = "";
+                box.classList.remove("boxSelect");
+                box.style.transform = "";
+                box.style.backgroundColor = "";
+                box.addEventListener("click", handleBoxClick);
+            });
+            count = 3;
+            document.querySelector(".chance").textContent = `You Have ${count} Chances`;
+            document.querySelector(".chancesCount").textContent = `Chance: ${count}`;
+            selectRandomBox = Math.floor(Math.random() * boxes.length);
+            selectedBox = boxes[selectRandomBox];
+            selectedBox.classList.add("boxSelect");
+            document.querySelector(".popUpMessage").style.display = "none";
+            CONTAINERGame.style.filter = "none";
+        }
+        
+        // Initial game setup
+        let selectRandomBox = Math.floor(Math.random() * boxes.length);
+        let selectedBox = boxes[selectRandomBox];
+        selectedBox.classList.add("boxSelect");
+        let count = 3;
+        
+        // Function to handle box click
+        function handleBoxClick(e) {
+            if (count > 0) {
+                count--;
+                if (e.target !== selectedBox) {
+                    e.target.innerHTML = "❌";
+                    e.target.removeEventListener("click", handleBoxClick);
+                } else {
+                    e.target.innerHTML = "✔️";
+                    e.target.style.transform = "rotateY(360deg)";
+                    e.target.style.backgroundColor = "red";
+                    setTimeout(() => {
+                        document.querySelector(".popUpMessage").style.display = "block";
+                        document.querySelector(".status").textContent = "You Win!";
+                        boxes.forEach(box => box.removeEventListener("click", handleBoxClick));
+                        CONTAINERGame.style.filter = "blur(20px)";
+                    }, 500);
+                }
+                document.querySelector(".chance").textContent = `You Have ${count} Chances`;
+                document.querySelector(".chancesCount").textContent = `Chance: ${count}`;
+            } else {
+                document.querySelector(".popUpMessage").style.display = "block";
+                document.querySelector(".status").textContent = "You Lose!";
+                boxes.forEach(box => box.removeEventListener("click", handleBoxClick));
+                CONTAINERGame.style.filter = "blur(20px)";
+            }
+        }
+
+        // Attach click event listeners to boxes
+        boxes.forEach(box => {
+            box.addEventListener("click", handleBoxClick);
+        });
+
+        // Reset game on button click
+        button.addEventListener("click", resetGame);
+    </script>
+</body>
+</html>

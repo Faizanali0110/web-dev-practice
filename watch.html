@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock with Day</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            justify-content: center;
+            background-color: rgb(220, 218, 214);
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background-color: rgba(254, 246, 246, 0.9);
+            border-radius: 1rem;
+            width: 35rem;
+            box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 12px;
+            text-align: center;
+            animation: rotation 10s infinite linear 3s;
+        }
+        
+
+        @keyframes rotation {
+            from {
+                transform: rotate(0deg);
+                transform: scale(0.5);
+
+            }
+            to {
+                transform: rotate(360deg);
+                transform: scale(2);
+            }1
+
+            from {
+                transform: rotate(360deg);
+            }
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        #clockDisplay {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        #dayDisplay {
+            font-size: 1.5rem;
+            color: #555;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Clock</h1>
+        <div id="clockDisplay"></div>
+        <div id="dayDisplay"></div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const day = days[now.getDay()];
+
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById("clockDisplay").textContent = timeString;
+            document.getElementById("dayDisplay").textContent = day;
+        }
+
+        // Call the function initially and then every second
+        setInterval(updateClock, 1000);
+        updateClock(); // initial call to display the time immediately on load
+    </script>
+</body>
+</html>
