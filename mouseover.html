@@ -12,13 +12,20 @@
             height: 100vh;
             overflow: hidden; /* Prevent scrolling */
             position: relative;
+            background-color: black;
         }
 
+
+        
+        
         .circle {
             width: 20px;
             height: 20px;
-            background-color: red;
+            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%);
+            filter: blur(3px);
+            
             border-radius: 50%;
+
             position: absolute;
             pointer-events: none; /* Allow pointer events to pass through the circle */
             transition: transform 0.1s; /* Smooth movement */

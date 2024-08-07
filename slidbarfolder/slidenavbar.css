@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    flex-wrap: wrap;
+    width: calc(100vw - 2rem);
+}
+
+nav .center-list {
+    display: flex;
+}
+
+.center-list li {
+    margin-left: 3rem;
+    list-style: none;
+    position: relative;
+    cursor: pointer;
+    padding: 0.5rem 0;
+}
+
+.center-list li::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: red;
+    transform: scaleX(0); 
+    transition: transform 1s ease; 
+}
+
+.center-list li:hover::before {
+    transform: scaleX(1); 
+    z-index: -1;
+}
+
+.icon-start {
+    font-size: 2rem;
+}
+
+.icon-end {
+    color: rgb(152, 11, 152);
+}
+
+.search-side {
+    border: 2px solid black;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.fa-bars {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.fa-bars:hover {
+    transform: rotate(360deg);
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.sidenav {
+    position: absolute;
+    width: 14rem;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: rgb(29, 28, 29);
+    color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: all 0.5s;
+    transform: translateX(250px);
+}
+
+.cross{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    cursor: pointer;
+    
+}
+.sidenav-open{
+    transform: translate(0);
+}
+
+.sidelist {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.sidelist {
+    margin-top:3rem;
+}
+.sidelist li {
+    list-style: none;
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    padding: 1rem;
+    gap: 1rem;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.sidelist li a {
+    display: flex;
+    align-items: center; /* Center align items vertically */
+    color: white;
+    text-decoration: none;
+    width: 100%; /* Ensure the link takes up the full width */
+    margin-left: auto; /* Push the item to the right */
+}
+
+.sidelist li a span {
+    margin-left: 1rem; /* Add some space between the text and the icon */
+}
+
+.sidelist li:hover {
+    background-color: white;
+}
+
+.sidelist li:hover a {
+    color: black; /* Change the link color to black on hover */
+}
