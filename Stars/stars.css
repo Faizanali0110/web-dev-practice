@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+body{
+    background-color: rgba(24, 220, 220, 0.644);
+    font-family: Inter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+/* stars.css */
+.star-container {
+    display: flex;
+    font-size: 2rem; /* Adjust as needed */
+}
+
+.stars {
+    cursor: pointer;
+    color: gray;
+    transition: all .2s;
+    padding-right: 4rem;
+}
+
+.active{
+    color: gold;
+}
+.filled{
+    color: yellow;
+}

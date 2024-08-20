@@ -145,11 +145,18 @@ input::placeholder {
     align-items: center;
     flex-direction: column;
 }
+@media (max-width: 375px){
+    .container{
+        width: 70%;
+    }
+
+}
 
 @media (max-width: 768px) {
     .container {
         padding: 1.5rem;
         width: 25rem; /* Adjusted padding */
+        width: 90%;
     }
 
     .continue-container {
@@ -174,6 +181,7 @@ input::placeholder {
     .container {
         padding: 1rem; /* Adjusted padding */
         margin: 20rem;
+        width: 90%;
     }
 
     .continue-container {

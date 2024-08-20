@@ -1,0 +1,63 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    background-color: rgb(220, 218, 214);
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: rgba(254, 246, 246, 0.9);
+    border-radius: 1rem;
+    width: 35rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 12px;
+    text-align: center;
+    animation: rotation 10s infinite linear 3s;
+}
+
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+        transform: scale(0.5);
+
+    }
+    to {
+        transform: rotate(360deg);
+        transform: scale(2);
+    }1
+
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+#clockDisplay {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+#dayDisplay {
+    font-size: 1.5rem;
+    color: #555;
+}
+

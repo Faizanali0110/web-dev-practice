@@ -1,0 +1,83 @@
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0f7fa;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-right: 4rem;
+}
+
+.button {
+    position: relative;
+    padding: 1rem;
+    background-color:#ffffff;
+    border: 1px solid #000000;    border-radius: 60%;
+    outline-offset: 2px;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+    
+
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateX(40px); /* Changed from 'translate: translatX();' */
+    transform-origin: right;
+    width: 5rem;
+    height: 5px;
+    background-color: gray;
+    transition: all .5s linear;
+    
+}
+.active{
+background-color: #ff9800;
+color: white;
+}
+.active::after {
+    
+    background-color: #4caf50;
+ 
+}
+.button-style{
+   height: 3rem;
+   padding: 1rem;
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   margin: 2rem;
+   width: 6rem;
+   border-radius: 20px;
+   border: none;
+   color: white;
+   cursor: pointer;
+
+
+  
+}
+.next{
+    background-color: #3f51b5;
+}
+.prev{
+    background-color: #f44336;
+    
+}
+

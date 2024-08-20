@@ -4,33 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mouse Tracker</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden; /* Prevent scrolling */
-            position: relative;
-            background-color: black;
-        }
-
-
-        
-        
-        .circle {
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%);
-            filter: blur(3px);
-            
-            border-radius: 50%;
-
-            position: absolute;
-            pointer-events: none; /* Allow pointer events to pass through the circle */
-            transition: transform 0.1s; /* Smooth movement */
-        }
-    </style>
+  <link rel="stylesheet" href="mouserover.css">
 </head>
 <body>
     <div class="circle" id="circle"></div>
@@ -62,24 +36,5 @@
     </div>
     <div class="clickClass"></div>
 </body>
-<script>
-    let buttonClick = document.querySelector("#buttonClick");
-    buttonClick.addEventListener("mouseover", (e) => {
-        let width = e.pageX;
-        let height = e.pageY;
-        console.log(width);
-        console.log(height);
-        dotFunction(width, height);
-    });
-
-    function dotFunction(width, height) {
-        let clickClass = document.querySelector(".clickClass");
-        clickClass.style.width = "10px"; // Set a fixed width for the dot
-        clickClass.style.height = "10px";
-        clickClass.style.transform =`translate(${width - 10}px, ${event.height - 10}px)`;
-        clickClass.style.borderRadius = "50%"; // Make it a circle
-        console.log(buttonClick.pageX)
-    }
-    console.log(buttonClick.pageX)
-</script>
+<script src="mouserTracker.js"></script>
 </html>
