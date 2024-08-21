@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: #333;
+}
+
+.text {
+    font-size: 4rem;
+    color:white
+}
+
+.animation-text {
+    position: relative;
+    color: goldenrod;
+    overflow: hidden; /* Ensures the animation stays within the text bounds */
+}
+
+.animation-text::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-left: 1px solid white;
+    background-color: #333;
+    animation: erase-animation 4s ease-in-out infinite; /* Longer duration to account for the pause */
+    transform-origin: right;
+    animation-delay: 2s;
+}
+
+@keyframes erase-animation {
+    0% {
+        width: 0%; /* Start with the entire text uncovered */
+    }
+    50% {
+        width: 100%; /* Fully erase the text */
+    }
+    75% {
+        width: 100%; /* Pause for a bit */
+    }
+    100% {
+        width: 0%; /* Reset to start */
+    }
+}
