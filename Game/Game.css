@@ -9,6 +9,12 @@
             justify-content: center;
             align-items: center;
         }
+        .CONTAINER-GAME{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
         .container {
             display: flex;
             align-items: center;
@@ -36,11 +42,7 @@
             align-items: center;
             font-size: 2rem;
         }
-        .boxSelect:hover {
-            background-color: rgb(197, 3, 3);
-            text-orientation: upright;
-            writing-mode: vertical-lr;
-        }
+       
         .score {
             display: flex;
             align-items: center;

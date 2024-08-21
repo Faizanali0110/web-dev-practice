@@ -74,6 +74,7 @@ input {
 }
 
 .sidenav {
+    display: block;
     position: absolute;
     width: 14rem;
     top: 0;
@@ -83,34 +84,67 @@ input {
     color: white;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    transition: all 0.5s;
     transform: translateX(250px);
+    transition: transform 0.5s ease; /* Transition for smooth sliding */
+    opacity: 0; /* Initially hidden */
 }
 
-.cross{
+
+/* Keyframes for sliding in the sidenav */
+@keyframes slideIn {
+    from {
+        transform: translateX(250px); /* Start position (off-screen) */
+        opacity: 0; /* Fully transparent */
+    }
+    to {
+        transform: translateX(0); /* End position (fully visible) */
+        opacity: 1; /* Fully opaque */
+    }
+}
+
+.sidenav-open {
+    animation: slideIn 0.5s forwards; /* Slide in animation */
+}
+
+/* Class to close the sidenav */
+.sidenav-close {
+    animation: slideOut 0.5s forwards; /* Slide out animation */
+}
+/* Keyframes for sliding out the sidenav */
+@keyframes slideOut {
+    from {
+        transform: translateX(0); /* Start position (fully visible) */
+        opacity: 1; /* Fully opaque */
+    }
+    to {
+        transform: translateX(250px); /* End position (off-screen) */
+        opacity: 0; /* Fully transparent */
+    }
+}
+.cancel {
     position: absolute;
     top: 0;
     right: 0;
     margin: 1rem;
     cursor: pointer;
-    
+    background-color: rgb(29, 28, 29);
+    outline: none;
+    border: none;
 }
-.sidenav-open{
-    transform: translate(0);
-}
+
+/* Class to open the sidenav */
 
 .sidelist {
     display: flex;
     flex-direction: column;
     padding: 0;
+    margin-top: 3rem;
 }
-.sidelist {
-    margin-top:3rem;
-}
+
 .sidelist li {
     list-style: none;
     display: flex;
-    align-items: center; /* Center align items vertically */
+    align-items: center;
     padding: 1rem;
     gap: 1rem;
     border-top-right-radius: 30px;
@@ -127,13 +161,14 @@ input {
 }
 
 .sidelist li a span {
-    margin-left: 1rem; /* Add some space between the text and the icon */
+    margin-left: 1rem;
 }
 
 .sidelist li:hover {
     background-color: white;
+    transition: all 0.5s;
 }
 
 .sidelist li:hover a {
-    color: black; /* Change the link color to black on hover */
+    color: black; 
 }
