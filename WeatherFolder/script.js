@@ -20,13 +20,13 @@ document.getElementById('getWeatherBtn').addEventListener('click', function() {
                 document.getElementById('weatherIcon').src = iconUrl;
                 document.getElementById('weatherIcon').style.display = 'block';
                 
-                // Change background image and add emoji based on weather condition
-                let backgroundImage;
+                // Change ba and add emoji based on weather condition
+               
                 let weatherEmoji;
                 if (weather.toLowerCase().includes('rain')) 
                     {
                     weatherEmoji = '🌧️';
-                    backgroundImage = 'url(rainy.jpg)';
+                   
                 } 
                 else if (weather.toLowerCase().includes('cloud')) {
                     weatherEmoji = '☁️';
@@ -36,12 +36,12 @@ document.getElementById('getWeatherBtn').addEventListener('click', function() {
                 else if (weather.toLowerCase().includes('sun') || weather.toLowerCase().includes('clear'))
                      {
                     weatherEmoji = '☀️';
-                    backgroundImage = 'url(sunny.jpg)';
+                  
                 } 
                 else
                  {
                     weatherEmoji = '';
-                    backgroundImage = 'url(default.jpg)';
+                 
                 }
 
                 document.getElementById('weather').innerText = `Weather: ${weather} ${weatherEmoji}`;
