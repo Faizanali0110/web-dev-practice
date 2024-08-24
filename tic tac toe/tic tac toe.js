@@ -82,14 +82,9 @@ function restartMatch()
     currentPlayer = "✔️"; 
 }
 
-function playMusic()
-{
 
-    let audio=new Audio("mouseClick.mp3")
-    audio.play(3)
-}
 boxes.forEach((box) => {
-    box.addEventListener("click", updateBox,playMusic);
+    box.addEventListener("click", updateBox);
   
 })
 
