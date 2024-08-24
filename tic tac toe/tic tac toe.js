@@ -7,7 +7,8 @@ let WIN=currentPlayer
 function updateBox() {
     
     
-    if (this.textContent === "") {
+    if (this.classList.contains("box-styling")) {
+        this.classList.remove("box-styling")
         WIN=currentPlayer
         this.textContent = currentPlayer;
         count++;
@@ -24,17 +25,19 @@ function updateBox() {
 
                             setTimeout(() => {
                                 alert(`${WIN} wins!`);
+                                restartMatch();
                             }, 100);
                         }
                     else
                     {
                         setTimeout(() => {
                             alert(`Draw Match!`);
-                        }, 100);  
+                            restartMatch();
+                        }, 1000);  
                         
                         
                     }
-                    restartMatch()
+                   
                 }
             
             else{
@@ -53,10 +56,6 @@ function updateBox() {
     }
 }
 
-boxes.forEach((box) => {
-    box.addEventListener("click", updateBox);
-  
-});
 function checkWinner() {
     for (let win of winner) {
         let pattern1 = boxes[win[0]].textContent;
@@ -82,3 +81,37 @@ function restartMatch()
     })
     currentPlayer = "✔️"; 
 }
+
+function playMusic()
+{
+
+    let audio=new Audio("mouseClick.mp3")
+    audio.play(3)
+}
+boxes.forEach((box) => {
+    box.addEventListener("click", updateBox,playMusic);
+  
+})
+
+
+
+boxes.forEach((box) => {
+    box.addEventListener("mouseover", () => {
+        if (box.textContent === "") { // Check if the box is empty
+            box.textContent = currentPlayer; // Set the box content to the current player
+            box.classList.add("box-styling")
+        }
+    });
+});
+
+
+boxes.forEach((box) => {
+    box.addEventListener("mouseout", () => {
+        if (box.classList.contains("box-styling")) { 
+
+            box.classList.remove("box-styling")
+            box.textContent="";
+
+        }
+    });
+});
